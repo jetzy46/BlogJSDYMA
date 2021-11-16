@@ -4,9 +4,14 @@ import "./form.scss";
 const form = document.querySelector("form");
 const errorElement = document.querySelector("#errors");
 const page = document.querySelector(".content");
+const btnCancel = document.querySelector(".btn-primary");
 const snack = page.querySelector(".snack");
 
 let errors = [];
+
+btnCancel.addEventListener("click", (e) => {
+  form.reset();
+});
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
