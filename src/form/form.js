@@ -27,12 +27,17 @@ form.addEventListener("submit", async (e) => {
           "Content-Type": "application/json",
         },
       });
-      snack.innerHTML = "Article publié !";
-      snack.classList.add("snack-send");
-      setTimeout(() => {
-        snack.className = snack.className.replace("snack-send", "");
-      }, 5000);
-      form.reset();
+      if (response.status < 299) {
+        snack.innerHTML = "Article publié !";
+        snack.classList.add("snack-send");
+        setTimeout(() => {
+          snack.className = snack.className.replace("snack-send", "");
+        }, 4000);
+        setTimeout(() => {
+          location.assign("/index.html");
+        }, 7000);
+        form.reset();
+      }
     } catch (error) {
       console.log("error : " + error);
       snack.innerHTML = "Erreur lors de la publication de l'article";

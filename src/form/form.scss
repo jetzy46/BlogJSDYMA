@@ -63,14 +63,14 @@
   &-send {
     visibility: visible; /* Hidden by default. Visible on click */
     background-color: var(--primary);
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
-    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    animation: fadein 0.5s, fadeout 0.5s 3.5s;
   }
   &-error {
     visibility: visible; /* Hidden by default. Visible on click */
     background-color: var(--error);
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
-    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    animation: fadein 0.5s, fadeout 0.5s 3.5s;
   }
 }
 .byebye {
