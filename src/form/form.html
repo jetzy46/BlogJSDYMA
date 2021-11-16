@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/15c0997426.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Ecrire un article</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a class="header-brand" href="./index.html">Blog</a>
+        <div class="header-menu">
+          <ul>
+            <li>
+              <a class="header-nav" href="./index.html">Accueil</a>
+            </li>
+            <li>
+              <a class="header-nav active" href="./form.html"
+                >Créer un article</a
+              >
+            </li>
+          </ul>
+          <div class="header-menu-icon">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+      </header>
+      <div class="content">
+        <div class="snack">nothing to see here</div>
+        <form action="">
+          <h2 class="title-underline">Ajouter un article</h2>
+          <div class="form-group">
+            <label>Auteur</label>
+            <input type="text" name="author" />
+          </div>
+          <div class="form-group">
+            <label>Image de profil</label>
+            <input type="text" name="img" />
+          </div>
+          <div class="form-group">
+            <label>Titre de l'article</label>
+            <input type="text" name="title" />
+          </div>
+          <div class="form-group">
+            <label>Article</label>
+            <textarea name="content"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Catégorie</label>
+            <input type="text" name="category" />
+          </div>
+          <ul class="text-error" id="errors"></ul>
+          <div class="form-btn-container">
+            <button class="btn btn-primary">Annuler</button>
+            <button class="btn btn-secondary">Sauvegarder</button>
+          </div>
+        </form>
+      </div>
+      <footer>© Jetzy</footer>
+    </div>
+  </body>
+</html>

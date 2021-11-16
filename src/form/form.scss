@@ -1,0 +1,125 @@
+.content {
+  background: var(--divider);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    background: white;
+    max-width: 700px;
+    width: 100%;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    .form-group {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      label {
+        font-size: 1.6rem;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      input,
+      textarea {
+        border: 1px solid var(--divider);
+        padding: 1rem;
+        outline: 0;
+        border-radius: 3px;
+        &:focus {
+          border-color: var(--accent);
+        }
+      }
+      textarea {
+        min-height: 20rem;
+      }
+    }
+    .form-btn-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .btn {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
+/* The snackbar */
+.snack {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px;
+  margin-left: -125px;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  right: 2rem;
+  top: 10rem;
+  &-send {
+    visibility: visible; /* Hidden by default. Visible on click */
+    background-color: var(--primary);
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+  }
+  &-error {
+    visibility: visible; /* Hidden by default. Visible on click */
+    background-color: var(--error);
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+  }
+}
+.byebye {
+  -webkit-animation: fadeout 0.5s;
+  animation: fadeout 0.5s;
+  visibility: hidden;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    right: 0;
+    opacity: 0;
+  }
+  to {
+    right: 2rem;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    right: 0;
+    opacity: 0;
+  }
+  to {
+    right: 2rem;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    right: 2rem;
+    opacity: 1;
+  }
+  to {
+    right: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    right: 2rem;
+    opacity: 1;
+  }
+  to {
+    right: 0;
+    opacity: 0;
+  }
+}

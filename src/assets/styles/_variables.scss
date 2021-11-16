@@ -1,0 +1,16 @@
+// On definie des variables pour des couleurs
+
+:root {
+  // couleurs
+  --primary: #2ecc71;
+  --dark: #27ae60;
+  --accent: #34495e;
+  --text: #1a1a1a;
+  --divider: #bdc3c7;
+  --dark-grey: #636e72;
+  --error: #e74c3c;
+  // autre
+  --font-family: "Rajdhani", sans-serif;
+  --box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
+    0 1px 3px 1px rgb(60 64 67 / 15%);
+}
