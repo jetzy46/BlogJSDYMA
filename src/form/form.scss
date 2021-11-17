@@ -1,5 +1,9 @@
 .content {
-  background: var(--divider);
+  background: linear-gradient(
+    rgb(49, 46, 129),
+    rgb(30, 58, 138),
+    rgb(12, 74, 110)
+  );
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,6 +57,11 @@
       align-items: center;
       .btn {
         margin-left: 0.5rem;
+      }
+      .btn-secondary {
+        &:hover {
+          background: #3742fa;
+        }
       }
     }
   }

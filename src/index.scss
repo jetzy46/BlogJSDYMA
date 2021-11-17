@@ -1,8 +1,37 @@
 @import "./assets/styles/media-queries";
 
 .content {
-  background: var(--divider);
+  background: linear-gradient(
+    rgb(49, 46, 129),
+    rgb(30, 58, 138),
+    rgb(12, 74, 110)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .sidebar {
+    flex: 0 0 20rem;
+    background: white;
+    padding: 1.5rem;
+    margin-right: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    .categories {
+      li {
+        cursor: pointer;
+        transition: color 0.2s;
+        margin-bottom: 0.6rem;
+        &:hover {
+          color: var(--dark);
+          strong {
+            color: var(--primary);
+          }
+        }
+      }
+    }
+  }
   .articles-container {
+    flex: 1;
     .article {
       background: white;
       padding: 1rem 3rem;
