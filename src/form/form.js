@@ -7,12 +7,15 @@ const page = document.querySelector(".content");
 const btnCancel = document.querySelector(".btn-primary");
 const snack = page.querySelector(".snack");
 
+let articleID;
 let errors = [];
 
+// Action du bouton annuler
 btnCancel.addEventListener("click", (e) => {
   form.reset();
 });
 
+// Formulaire
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   //   on récupère les données du formulaire et on les transforme en un objets JSON pour les utiliser
@@ -22,18 +25,38 @@ form.addEventListener("submit", async (e) => {
     accu[value[0]] = value[1];
     return accu;
   }, {});
+  // Soumission du formulaire
   if (formIsValid(reducedArticle)) {
     try {
       const jsonArticle = JSON.stringify(reducedArticle);
-      const response = await fetch("https://restapi.fr/api/jetarticles", {
-        method: "POST",
-        body: jsonArticle,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let response;
+      if (articleID) {
+        response = await fetch(
+          `https://restapi.fr/api/jetarticles/${articleID}`,
+          {
+            method: "PATCH",
+            body: jsonArticle,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+      } else {
+        response = await fetch("https://restapi.fr/api/jetarticles", {
+          method: "POST",
+          body: jsonArticle,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
+      // Action si l'article est bien POST
       if (response.status < 299) {
-        snack.innerHTML = "Article publié !";
+        if (articleID) {
+          snack.innerHTML = "Article modifié !";
+        } else {
+          snack.innerHTML = "Article publié !";
+        }
         snack.classList.add("snack-send");
         setTimeout(() => {
           snack.className = snack.className.replace("snack-send", "");
@@ -54,6 +77,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
+// Affichage des erreurs du formulaire avant de publier
 const formIsValid = (a) => {
   errors = [];
   if (!a.author || !a.category || !a.content || !a.img || !a.title) {
@@ -74,3 +98,37 @@ const formIsValid = (a) => {
     return true;
   }
 };
+
+// Modification d'un article
+
+const fillForm = (article) => {
+  const author = document.querySelector('input[name="author"]');
+  const imgAuthor = document.querySelector('input[name="img"]');
+  const articleTitle = document.querySelector('input[name="title"]');
+  const articleContent = document.querySelector("textarea");
+  const category = document.querySelector("select");
+
+  author.value = article.author || "";
+  imgAuthor.value = article.img || "";
+  articleTitle.value = article.title || "";
+  articleContent.value = article.content || "";
+  category.value = article.category || "Divers";
+};
+
+const initForm = async () => {
+  // Récuparation de l'ID d'un article pour modification
+  const params = new URL(location.href);
+  articleID = params.searchParams.get("id");
+
+  if (articleID) {
+    const response = await fetch(
+      `https://restapi.fr/api/jetarticles/${articleID}`
+    );
+    if (response.status < 300) {
+      const article = await response.json();
+      fillForm(article);
+    }
+  }
+};
+
+initForm();

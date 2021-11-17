@@ -15,13 +15,16 @@ const createArticles = (arti) => {
       </div>
       <p class="article-content">${art.content}</p>
       <div class="article-actions">
-        <button class="btn btn-error" data-id=${art._id}>Supprimer</button>
+      <button class="btn btn-error" data-id=${art._id}>Supprimer</button>
+      <button class="btn btn-primary" data-id=${art._id}>Modifier</button>
       </div>
         `;
     return article;
   });
   articlesContainer.innerHTML = "";
   articlesContainer.append(...articlesSet);
+
+  // Bouton supprimer sur chaque article
 
   const deleteButtons = articlesContainer.querySelectorAll(".btn-error");
   deleteButtons.forEach((button) => {
@@ -38,6 +41,19 @@ const createArticles = (arti) => {
         const body = await response.json();
         fetchArticles();
       } catch (error) {}
+    });
+  });
+
+  // Boutton modifier sur chaque article
+
+  const editButtons = articlesContainer.querySelectorAll(".btn-primary");
+  console.log(editButtons);
+  editButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      console.log("click");
+      const target = e.target;
+      const articleID = target.dataset.id;
+      location.assign(`/form.html?id=${articleID}`);
     });
   });
 };

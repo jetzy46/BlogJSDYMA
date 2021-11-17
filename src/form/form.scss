@@ -35,6 +35,17 @@
       textarea {
         min-height: 20rem;
       }
+      select {
+        border: 1px solid var(--divider);
+        padding: 1rem;
+        outline: 0;
+        border-radius: 3px;
+        max-width: 20rem;
+        background: white;
+        option {
+          background: white;
+        }
+      }
     }
     .form-btn-container {
       display: flex;
