@@ -3,8 +3,10 @@ import "./index.scss";
 
 const articlesContainer = document.querySelector(".articles-container");
 const categoriesContainer = document.querySelector(".categories");
+const selectElement = document.querySelector("select");
 let articles;
 let filter;
+let sortBy = "desc";
 
 const createArticles = () => {
   const articlesSet = articles
@@ -96,7 +98,10 @@ const createMenuCategoris = () => {
 const displayMenuCategories = (categoriesArray) => {
   const liElements = categoriesArray.map((categoryElement) => {
     const li = document.createElement("li");
-    li.innerHTML = `<li>${categoryElement[0]} - <strong>${categoryElement[1]}</strong></li>`;
+    li.innerHTML = `${categoryElement[0]} - <strong>${categoryElement[1]}</strong>`;
+    if (categoryElement[0] === filter) {
+      li.classList.add("active");
+    }
     li.addEventListener("click", () => {
       if (filter === categoryElement[0]) {
         filter = null;
@@ -117,11 +122,20 @@ const displayMenuCategories = (categoriesArray) => {
   categoriesContainer.append(...liElements);
 };
 
+// Tri des articles
+
+selectElement.addEventListener("change", () => {
+  sortBy = selectElement.value;
+  fetchArticles();
+});
+
 // Récupération des articles
 
 const fetchArticles = async () => {
   try {
-    const response = await fetch("https://restapi.fr/api/jetarticles");
+    const response = await fetch(
+      `https://restapi.fr/api/jetarticles?sort=createdAt:${sortBy}`
+    );
     articles = await response.json();
     createArticles();
     createMenuCategoris();

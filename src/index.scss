@@ -9,14 +9,26 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  select {
+    width: 100%;
+    padding: 1rem;
+    border: 0;
+    outline: 0;
+    border-radius: 3px;
+    background: white;
+    margin-bottom: 1rem;
+    option {
+      background: white;
+    }
+  }
   .sidebar {
     flex: 0 0 20rem;
-    background: white;
-    padding: 1.5rem;
     margin-right: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: var(--box-shadow);
     .categories {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: var(--box-shadow);
+      padding: 1.5rem;
       li {
         cursor: pointer;
         transition: color 0.2s;
