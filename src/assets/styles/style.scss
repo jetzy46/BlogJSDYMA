@@ -96,6 +96,36 @@ header {
   }
 }
 
+.calc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal {
+    background: white;
+    height: auto;
+    width: auto;
+    border-radius: 1rem;
+    padding: 2rem;
+    .modal-question {
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .btn {
+      margin: 1rem;
+      width: 20rem;
+      @include xs {
+        width: 12rem;
+      }
+    }
+  }
+}
+
 footer {
   grid-area: footer;
   padding: 10px;

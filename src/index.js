@@ -1,5 +1,6 @@
 import "./assets/styles/style.scss";
 import "./index.scss";
+import { openModal } from "./assets/javascripts/modal";
 
 const articlesContainer = document.querySelector(".articles-container");
 const categoriesContainer = document.querySelector(".categories");
@@ -49,22 +50,23 @@ const createArticles = () => {
   const deleteButtons = articlesContainer.querySelectorAll(".btn-error");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", async (e) => {
-      try {
-        const target = e.target;
-        const articleID = target.dataset.id;
-        const response = await fetch(
-          `https://restapi.fr/api/jetarticles/${articleID}`,
-          {
-            method: "DELETE",
-          }
-        );
-        const body = await response.json();
-        fetchArticles();
-      } catch (error) {}
+      openModal("Etes vous sûr de vouloir supprimer cette article ?");
+      // try {
+      //   const target = e.target;
+      //   const articleID = target.dataset.id;
+      //   const response = await fetch(
+      //     `https://restapi.fr/api/jetarticles/${articleID}`,
+      //     {
+      //       method: "DELETE",
+      //     }
+      //   );
+      //   const body = await response.json();
+      //   fetchArticles();
+      // } catch (error) {}
     });
   });
 
-  // Boutton modifier sur chaque article
+  // Bouton modifier sur chaque article
 
   const editButtons = articlesContainer.querySelectorAll(".btn-primary");
   editButtons.forEach((button) => {
