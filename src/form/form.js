@@ -1,5 +1,6 @@
 import "../assets/styles/style.scss";
 import "./form.scss";
+import { openModal } from "../assets/javascripts/modal";
 
 const form = document.querySelector("form");
 const errorElement = document.querySelector("#errors");
@@ -11,8 +12,12 @@ let articleID;
 let errors = [];
 
 // Action du bouton annuler
-btnCancel.addEventListener("click", (e) => {
-  form.reset();
+btnCancel.addEventListener("click", async (e) => {
+  const result = await openModal("Etes vous sûr de vouloir annuler ?");
+  if (result) {
+    form.reset();
+    location.assign("/index.html");
+  }
 });
 
 // Formulaire

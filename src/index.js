@@ -50,19 +50,25 @@ const createArticles = () => {
   const deleteButtons = articlesContainer.querySelectorAll(".btn-error");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", async (e) => {
-      openModal("Etes vous sûr de vouloir supprimer cette article ?");
-      // try {
-      //   const target = e.target;
-      //   const articleID = target.dataset.id;
-      //   const response = await fetch(
-      //     `https://restapi.fr/api/jetarticles/${articleID}`,
-      //     {
-      //       method: "DELETE",
-      //     }
-      //   );
-      //   const body = await response.json();
-      //   fetchArticles();
-      // } catch (error) {}
+      const result = await openModal(
+        "Etes vous sûr de vouloir supprimer cette article ?"
+      );
+      if (result === true) {
+        try {
+          const target = e.target;
+          const articleID = target.dataset.id;
+          const response = await fetch(
+            `https://restapi.fr/api/jetarticles/${articleID}`,
+            {
+              method: "DELETE",
+            }
+          );
+          const body = await response.json();
+          fetchArticles();
+        } catch (error) {
+          console.log(error);
+        }
+      }
     });
   });
 
